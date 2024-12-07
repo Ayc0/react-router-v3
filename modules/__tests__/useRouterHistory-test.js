@@ -1,7 +1,6 @@
-import assert from 'assert'
 import expect from 'expect'
 import React from 'react'
-import { render, unmountComponentAtNode } from 'react-dom'
+import { render, cleanup } from '@testing-library/react'
 import useRouterHistory from '../useRouterHistory'
 import createHistory from 'history/lib/createMemoryHistory'
 import Redirect from '../Redirect'
@@ -9,10 +8,10 @@ import Router from '../Router'
 import Route from '../Route'
 
 describe('useRouterHistory', () => {
-  it('passes along options, especially query parsing', done => {
+  it('passes along options, especially query parsing', (done) => {
     const history = useRouterHistory(createHistory)({
       stringifyQuery() {
-        assert(true)
+        console.assert(true)
         done()
       }
     })
@@ -21,14 +20,8 @@ describe('useRouterHistory', () => {
   })
 
   describe('when using basename', () => {
-
-    let node
-    beforeEach(() => {
-      node = document.createElement('div')
-    })
-
     afterEach(() => {
-      unmountComponentAtNode(node)
+      cleanup()
     })
 
     it('should regard basename', () => {
@@ -44,22 +37,22 @@ describe('useRouterHistory', () => {
       pathnames.push(currentLocation.pathname)
       basenames.push(currentLocation.basename)
 
-      history.listen(location => {
+      history.listen((location) => {
         pathnames.push(location.pathname)
         basenames.push(location.basename)
       })
 
-      const instance = render((
+      render(
         <Router history={history}>
           <Route path="/messages/:id" />
           <Redirect from="/notes/:id" to="/messages/:id" />
         </Router>
-      ), node)
+      )
 
       expect(pathnames).toEqual([ '/notes/5', '/messages/5' ])
       expect(basenames).toEqual([ '/foo', '/foo' ])
-      expect(instance.state.location.pathname).toEqual('/messages/5')
-      expect(instance.state.location.basename).toEqual('/foo')
+      expect(history.getCurrentLocation().pathname).toEqual('/messages/5')
+      expect(history.getCurrentLocation().basename).toEqual('/foo')
     })
   })
 })

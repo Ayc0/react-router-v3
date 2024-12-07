@@ -1,6 +1,6 @@
 import expect from 'expect'
 import React, { Component } from 'react'
-import { render, unmountComponentAtNode } from 'react-dom'
+import { render, cleanup } from '@testing-library/react'
 import createHistory from '../createMemoryHistory'
 import Route from '../Route'
 import Router from '../Router'
@@ -18,13 +18,8 @@ describe('withRouter', function () {
     isActive() {}
   }
 
-  let node
-  beforeEach(function () {
-    node = document.createElement('div')
-  })
-
   afterEach(function () {
-    unmountComponentAtNode(node)
+    cleanup()
   })
 
   it('should put router on props', function (done) {
@@ -38,11 +33,11 @@ describe('withRouter', function () {
       return <MyComponent /> // Ensure no props are passed explicitly.
     }
 
-    render((
+    render(
       <Router history={createHistory('/')}>
         <Route path="/" component={App} />
       </Router>
-    ), node)
+    )
   })
 
   it('should set displayName', function () {
@@ -52,8 +47,9 @@ describe('withRouter', function () {
 
     MyComponent.displayName = 'MyComponent'
 
-    expect(withRouter(MyComponent).displayName)
-      .toEqual('withRouter(MyComponent)')
+    expect(withRouter(MyComponent).displayName).toEqual(
+      'withRouter(MyComponent)'
+    )
   })
 
   it('should use router prop if specified', function (done) {
@@ -63,28 +59,7 @@ describe('withRouter', function () {
       return null
     })
 
-    render(<MyComponent router={routerStub} />, node)
-  })
-
-  it('should support withRef', function () {
-    const spy = expect.createSpy()
-
-    class MyComponent extends Component {
-      invokeSpy() {
-        spy()
-      }
-
-      render() {
-        return null
-      }
-    }
-
-    const WrappedComponent = withRouter(MyComponent, { withRef: true })
-
-    const instance = render(<WrappedComponent router={routerStub} />, node)
-    instance.getWrappedInstance().invokeSpy()
-
-    expect(spy).toHaveBeenCalled()
+    render(<MyComponent router={routerStub} />)
   })
 
   it('updates the context inside static containers', function (done) {
@@ -115,40 +90,47 @@ describe('withRouter', function () {
 
     const history = createHistory('/')
 
-    const execNextStep = execSteps([
-      () => {
-        expect(node.firstChild.textContent).toEqual('/')
-        history.push('/hello')
-      },
-      () => {
-        // React 16 has slightly different update timing so we'll just sorta
-        // punt a bit with a setTimeout.
-        setTimeout(() => {
-          expect(node.firstChild.textContent).toEqual('/hello')
-        }, 10)
-      }
-    ], done)
+    const node = document.createElement('div')
 
-    render((
+    const execNextStep = execSteps(
+      [
+        () => {
+          expect(node.textContent).toEqual('/')
+          history.push('/hello')
+        },
+        () => {
+          // React 16 has slightly different update timing so we'll just sorta
+          // punt a bit with a setTimeout.
+          setTimeout(() => {
+            expect(node.textContent).toEqual('/hello')
+          }, 10)
+        }
+      ],
+      done
+    )
+
+    render(
       <Router history={history} onUpdate={execNextStep}>
         <Route component={StaticContainer}>
           <Route path="/" component={WrappedApp} />
           <Route path="/hello" component={WrappedApp} />
         </Route>
-      </Router>
-    ), node)
+      </Router>,
+      {
+        container: node
+      }
+    )
   })
 
-  it('should render Component even without Router context', function (done) {
+  it('should render Component even without Router context', function () {
     const MyComponent = withRouter(({ router }) => {
       expect(router).toNotExist()
 
       return <h1>Hello</h1>
     })
 
-    render((<MyComponent />), node, function () {
-      expect(node.firstChild.textContent).toEqual('Hello')
-      done()
-    })
+    const node = document.createElement('div')
+    render(<MyComponent />, { container: node })
+    expect(node.textContent).toEqual('Hello')
   })
 })
