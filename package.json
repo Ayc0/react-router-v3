@@ -7,7 +7,7 @@
     "lib",
     "umd"
   ],
-  "types": "types/index.d.ts",
+  "types": "lib/index.d.ts",
   "main": "lib/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
