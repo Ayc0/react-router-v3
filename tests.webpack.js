@@ -47,5 +47,5 @@ afterEach(() => {
   cleanup()
 })
 
-const context = require.context('./modules', true, /-test\.js$/)
+const context = require.context('./tests', true, /-test\.js$/)
 context.keys().forEach(context)

@@ -1,30 +1,30 @@
-import expect from 'expect'
-import React, { Component } from 'react'
-import { render } from '@testing-library/react'
-import createHistory from '../createMemoryHistory'
-import Router from '../Router'
+import expect from "expect";
+import React, { Component } from "react";
+import { render } from "@testing-library/react";
+import createHistory from "../modules/createMemoryHistory";
+import Router from "../modules/Router";
 
-describe('a Route Component', function () {
-  it('injects the right props', function () {
+describe("a Route Component", function () {
+  it("injects the right props", function () {
     class Parent extends Component {
       componentDidMount() {
-        expect(this.props.route).toEqual(parent)
-        expect(this.props.routes).toEqual([ parent, child ])
+        expect(this.props.route).toEqual(parent);
+        expect(this.props.routes).toEqual([parent, child]);
       }
       render() {
-        return null
+        return null;
       }
     }
 
     class Child extends Component {
       render() {
-        return null
+        return null;
       }
     }
 
-    const child = { path: 'child', component: Child }
-    const parent = { path: '/', component: Parent, childRoutes: [ child ] }
+    const child = { path: "child", component: Child };
+    const parent = { path: "/", component: Parent, childRoutes: [child] };
 
-    render(<Router history={createHistory('/child')} routes={parent} />)
-  })
-})
+    render(<Router history={createHistory("/child")} routes={parent} />);
+  });
+});
