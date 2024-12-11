@@ -16,8 +16,8 @@
   "bugs": "https://github.com/Ayc0/react-router-v3/issues",
   "scripts": {
     "build": "npm run build-cjs && npm run build-es",
-    "build-cjs": "rimraf lib && cross-env BABEL_ENV=cjs babel ./modules -d lib --ignore __tests__",
-    "build-es": "rimraf es && cross-env BABEL_ENV=es babel ./modules -d es --ignore __tests__",
+    "build-cjs": "rimraf lib && cross-env BABEL_ENV=cjs babel ./modules -d lib",
+    "build-es": "rimraf es && cross-env BABEL_ENV=es babel ./modules -d es",
     "build-umd": "cross-env NODE_ENV=development webpack --mode development ./modules/index.js -o umd",
     "build-min": "cross-env NODE_ENV=production webpack --mode production ./modules/index.js -o umd",
     "lint": "eslint modules types scripts *.js --ext .js --ext .ts",
