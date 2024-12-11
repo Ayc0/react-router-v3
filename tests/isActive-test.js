@@ -3,10 +3,10 @@
 // import expect from 'expect'
 // import React from 'react'
 // import { render } from '@testing-library/react'
-// import createHistory from '../createMemoryHistory'
-// import IndexRoute from '../IndexRoute'
-// import Router from '../Router'
-// import Route from '../Route'
+// import createHistory from '../modules/createMemoryHistory'
+// import IndexRoute from '../modules/IndexRoute'
+// import Router from '../modules/Router'
+// import Route from '../modules/Route'
 // import qs from 'qs'
 
 // describe('isActive', function () {
