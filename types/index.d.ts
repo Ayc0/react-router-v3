@@ -31,42 +31,42 @@ export {
   RouterState,
   RedirectFunction,
   StringifyQuery
-} from './lib/Router'
-export { LinkProps } from './lib/Link'
-export { IndexLinkProps } from './lib/IndexLink'
-export { RouteProps, PlainRoute } from './lib/Route'
-export { IndexRouteProps } from './lib/IndexRoute'
-export { RedirectProps } from './lib/Redirect'
-export { IndexRedirectProps } from './lib/IndexRedirect'
-export { WithRouterProps } from './lib/withRouter'
+} from './Router'
+export { LinkProps } from './Link'
+export { IndexLinkProps } from './IndexLink'
+export { RouteProps, PlainRoute } from './Route'
+export { IndexRouteProps } from './IndexRoute'
+export { RedirectProps } from './Redirect'
+export { IndexRedirectProps } from './IndexRedirect'
+export { WithRouterProps } from './withRouter'
 
 /* components */
-export { default as Router } from './lib/Router'
-export { default as Link } from './lib/Link'
-export { default as IndexLink } from './lib/IndexLink'
-export { default as withRouter } from './lib/withRouter'
+export { default as Router } from './Router'
+export { default as Link } from './Link'
+export { default as IndexLink } from './IndexLink'
+export { default as withRouter } from './withRouter'
 
 /* components (configuration) */
-export { default as IndexRedirect } from './lib/IndexRedirect'
-export { default as IndexRoute } from './lib/IndexRoute'
-export { default as Redirect } from './lib/Redirect'
-export { default as Route } from './lib/Route'
+export { default as IndexRedirect } from './IndexRedirect'
+export { default as IndexRoute } from './IndexRoute'
+export { default as Redirect } from './Redirect'
+export { default as Route } from './Route'
 
 /* utils */
-export { createRoutes } from './lib/RouteUtils'
-export { default as RouterContext } from './lib/RouterContext'
-export { routerShape, locationShape } from './lib/PropTypes'
+export { createRoutes } from './RouteUtils'
+export { default as RouterContext } from './RouterContext'
+export { routerShape, locationShape } from './PropTypes'
 export {
   default as match,
   MatchHistoryArgs,
   MatchLocationArgs,
   MatchCallback
-} from './lib/match'
-export { default as useRouterHistory } from './lib/useRouterHistory'
-export { formatPattern } from './lib/PatternUtils'
-export { default as applyRouterMiddleware } from './lib/applyRouterMiddleware'
+} from './match'
+export { default as useRouterHistory } from './useRouterHistory'
+export { formatPattern } from './PatternUtils'
+export { default as applyRouterMiddleware } from './applyRouterMiddleware'
 
 /* histories */
-export { default as browserHistory } from './lib/browserHistory'
-export { default as hashHistory } from './lib/hashHistory'
-export { default as createMemoryHistory } from './lib/createMemoryHistory'
+export { default as browserHistory } from './browserHistory'
+export { default as hashHistory } from './hashHistory'
+export { default as createMemoryHistory } from './createMemoryHistory'

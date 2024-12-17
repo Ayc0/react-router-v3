@@ -19,5 +19,4 @@ console.log(
   )
 )
 
-exec('cp types/index.d.ts lib/')
-exec('cp types/lib/* lib/')
+exec('cp types/* lib/')
