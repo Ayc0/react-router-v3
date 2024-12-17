@@ -1,6 +1,6 @@
 {
   "name": "@ayc0/react-router-v3",
-  "version": "3.3.0-alpha.4",
+  "version": "3.3.0-alpha.5",
   "description": "A complete routing library for React",
   "files": [
     "es",
