@@ -3,25 +3,17 @@
   "version": "3.3.0-alpha.5",
   "description": "A complete routing library for React",
   "files": [
-    "es",
-    "lib",
-    "umd"
+    "lib"
   ],
   "types": "lib/index.d.ts",
   "main": "lib/index.js",
-  "module": "es/index.js",
-  "jsnext:main": "es/index.js",
   "repository": "https://github.com/Ayc0/react-router-v3",
   "homepage": "https://github.com/Ayc0/react-router-v3#readme",
   "bugs": "https://github.com/Ayc0/react-router-v3/issues",
   "scripts": {
-    "build": "npm run build-cjs && npm run build-es",
-    "build-cjs": "rimraf lib && cross-env BABEL_ENV=cjs babel ./modules -d lib",
-    "build-es": "rimraf es && cross-env BABEL_ENV=es babel ./modules -d es",
-    "build-umd": "cross-env NODE_ENV=development webpack --mode development ./modules/index.js -o umd",
-    "build-min": "cross-env NODE_ENV=production webpack --mode production ./modules/index.js -o umd",
-    "lint": "eslint modules types scripts *.js --ext .js --ext .ts",
-    "prepublishOnly": "node ./scripts/build.js",
+    "build": "rimraf lib && cross-env BABEL_ENV=cjs babel ./modules -d lib && cp types/* lib/",
+    "lint": "eslint modules types *.js --ext .js --ext .ts",
+    "prepublishOnly": "yarn build",
     "test": "npm run lint && npm run test-node && npm run test-browser",
     "test-browser": "cross-env NODE_ENV=test karma start",
     "test-node": "cross-env NODE_ENV=test mocha --require @babel/register tests.node.js"
@@ -52,7 +44,6 @@
     "history": "^3.0.0",
     "hoist-non-react-statics": "^3.3.2",
     "invariant": "^2.2.1",
-    "loose-envify": "^1.2.0",
     "react-is": "^18.3.1",
     "warning": "^3.0.0"
   },
@@ -89,7 +80,6 @@
     "expect": "^1.20.2",
     "express": "^4.14.0",
     "express-urlrewrite": "^1.2.0",
-    "gzip-size": "^4.1.0",
     "karma": "^4.1.0",
     "karma-browserstack-launcher": "^1.0.1",
     "karma-chrome-launcher": "^2.0.0",
@@ -98,7 +88,6 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^5.0.1",
     "mocha": "^5.0.4",
-    "pretty-bytes": "^4.0.2",
     "qs": "^6.2.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

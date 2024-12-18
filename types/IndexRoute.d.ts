@@ -7,7 +7,7 @@ import {
   RouteComponent,
   RouteComponents,
   RouterState
-} from '..'
+} from '.'
 
 type ComponentCallback = (err: any, component: RouteComponent) => any;
 type ComponentsCallback = (err: any, components: RouteComponents) => any;

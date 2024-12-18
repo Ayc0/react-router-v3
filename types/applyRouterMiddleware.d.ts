@@ -1,4 +1,4 @@
-import { RouteComponent } from '..'
+import { RouteComponent } from '.'
 import RouterContext from './RouterContext'
 
 export interface Middleware {

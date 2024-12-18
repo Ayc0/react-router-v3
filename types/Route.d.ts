@@ -8,7 +8,7 @@ import {
   RouteComponents,
   RoutePattern,
   RouterState
-} from '..'
+} from '.'
 import { IndexRouteProps } from './IndexRoute'
 
 export interface RouteProps<Props = any> extends IndexRouteProps<Props> {

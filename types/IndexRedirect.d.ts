@@ -1,5 +1,5 @@
 import { FunctionComponent, ClassAttributes } from 'react'
-import { RoutePattern } from '..'
+import { RoutePattern } from '.'
 import { Query } from 'history'
 
 export interface IndexRedirectProps extends ClassAttributes<any> {

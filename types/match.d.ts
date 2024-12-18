@@ -1,5 +1,5 @@
 import { Basename, History, Location, LocationDescriptor } from 'history'
-import { ParseQueryString, RouteConfig, StringifyQuery } from '..'
+import { ParseQueryString, RouteConfig, StringifyQuery } from '.'
 
 export interface MatchArgs {
   routes: RouteConfig;

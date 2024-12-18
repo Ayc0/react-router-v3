@@ -6,8 +6,6 @@ React Router is a complete routing library for [React](https://facebook.github.i
 
 React Router keeps your UI in sync with the URL. It has a simple API with powerful features like lazy code loading, dynamic route matching, and location transition handling built right in. Make the URL your first thought, not an after-thought.
 
-[![Discord][discord-badge]][discord]
-
 ### 4.0 is here!
 
 The next version of React Router (4.0) has been released! Check out the `master` branch.
@@ -51,14 +49,6 @@ var Router = require("react-router").Router;
 var Route = require("react-router").Route;
 var Link = require("react-router").Link;
 ```
-
-The UMD build is also available on [unpkg](https://unpkg.com):
-
-```html
-<script src="https://unpkg.com/react-router/umd/ReactRouter.min.js"></script>
-```
-
-You can find the library on `window.ReactRouter`.
 
 ### What's it look like?
 

@@ -1,5 +1,5 @@
 import { FunctionComponent, ClassAttributes } from 'react'
-import { RoutePattern } from '..'
+import { RoutePattern } from '.'
 import { IndexRedirectProps } from './IndexRedirect'
 import { Query } from 'history'
 
