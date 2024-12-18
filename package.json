@@ -12,8 +12,8 @@
   "bugs": "https://github.com/Ayc0/react-router-v3/issues",
   "scripts": {
     "build": "rimraf lib && cross-env BABEL_ENV=cjs babel ./modules -d lib && cp types/* lib/",
-    "lint": "eslint modules types scripts *.js --ext .js --ext .ts",
-    "prepublishOnly": "node ./scripts/build.js",
+    "lint": "eslint modules types *.js --ext .js --ext .ts",
+    "prepublishOnly": "yarn build",
     "test": "npm run lint && npm run test-node && npm run test-browser",
     "test-browser": "cross-env NODE_ENV=test karma start",
     "test-node": "cross-env NODE_ENV=test mocha --require @babel/register tests.node.js"
