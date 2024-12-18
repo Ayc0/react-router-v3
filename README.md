@@ -50,14 +50,6 @@ var Route = require("react-router").Route;
 var Link = require("react-router").Link;
 ```
 
-The UMD build is also available on [unpkg](https://unpkg.com):
-
-```html
-<script src="https://unpkg.com/react-router/umd/ReactRouter.min.js"></script>
-```
-
-You can find the library on `window.ReactRouter`.
-
 ### What's it look like?
 
 ```js
