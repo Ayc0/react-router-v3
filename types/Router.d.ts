@@ -15,7 +15,7 @@ import {
   Query,
   Search
 } from 'history'
-import { PlainRoute } from '..'
+import { PlainRoute } from '.'
 import React = require('react');
 
 export interface Params {
